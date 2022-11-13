@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+/* El nombre del programa. */
+namespace PruebaVector2
+{
+    /* El nombre del programa. */
+    class PruebaVector2
+    {
+       /* Declarar una variable de tipo matriz flotante. */
+        private float[] alturas;
+        private float promedio;
+
+        public void Cargar() 
+        {
+           /* Crea una nueva matriz de 5 flotadores y luego le pide al usuario que ingrese la altura de
+           5 personas. */
+            alturas=new float[5];
+            for (int f = 0; f < 5; f++)
+            {
+                Console.Write("Ingrese la altura de la persona:");
+                string linea = Console.ReadLine();
+                alturas[f] = float.Parse(linea);
+            }
+        }
+    
+        public void CalcularPromedio() 
+        {
+           /* Cálculo de la media de las alturas de las 5 personas. */
+            float suma;
+            suma=0;
+            for(int f=0; f < 5; f++) 
+            {
+                suma=suma+alturas[f];
+            }
+            promedio=suma/5;
+            Console.WriteLine("Promedio de alturas:"+promedio);
+        }
+
+        public void MayoresMenores() 
+        {
+        /* Contar el número de personas que son más altas que la estatura promedio y el número de
+        personas que son más bajas que la estatura promedio. */
+            int may,men;
+            may=0;
+            men=0;
+            for(int f = 0; f < 5; f++) 
+            {
+                if (alturas[f] > promedio) 
+                {
+	                may++;
+                }
+                else
+                {
+                    if (alturas[f] < promedio) 
+                    {
+                        men++;
+                    }
+                }
+            }
+            /* Imprime el número de personas que son más altas que la estatura promedio y el número de
+            personas que son más bajas que la estatura promedio. */
+            Console.WriteLine("Cantidad de personas mayores al promedio:"+may);
+            Console.WriteLine("Cantidad de personas menores al promedio:"+men);
+            Console.ReadKey();
+        }
+
+        static void Main(string[] args)
+        {
+         /* Llamando a los métodos. */
+            PruebaVector2 pv2 = new PruebaVector2();
+            pv2.Cargar();
+            pv2.CalcularPromedio();
+            pv2.MayoresMenores();
+        }
+    }
+}
